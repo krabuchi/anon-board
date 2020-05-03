@@ -1,12 +1,11 @@
 import React from "react";
 
 function MessageList({ messages }) {
-  let date = new Date(message.created);
   const list = messages.map((message) => (
     <div key={message._id} style={listStyle}>
-      <small>{date}</small>
       <h6>{message.name}</h6>
       <p> {message.content}</p>
+      <small>{message.created}</small>
     </div>
   ));
   return <div style={style}>{list}</div>;
@@ -18,8 +17,10 @@ const style = {
 };
 
 const listStyle = {
-  border: "1px solid #f2f2f2",
+  border: "1px solid #595959",
   borderRadius: "5px",
+  margin: "5px 0",
+  padding: "5px",
 };
 
 export default MessageList;
