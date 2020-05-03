@@ -1,13 +1,17 @@
 import React from "react";
 
 function MessageList({ messages }) {
-  const list = messages.map((message) => (
-    <div key={message._id} style={listStyle}>
-      <h6>{message.name}</h6>
-      <p> {message.content}</p>
-      <small>{message.created}</small>
-    </div>
-  ));
+  const list = messages.reverse().map((message) => {
+    const date = new Date(message.created);
+    const { name, content, _id } = message;
+    return (
+      <div key={_id} style={listStyle}>
+        <h6>{name}</h6>
+        <p> {content}</p>
+        <small>{date.toLocaleString("en-GB", { timeZone: "GMT" })}</small>
+      </div>
+    );
+  });
   return <div style={style}>{list}</div>;
 }
 
